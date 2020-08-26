@@ -4,8 +4,9 @@
   1. Connect the Arduino MKR wifi 1010 board to your PC and open the Arduino IDE.
   2. In the Arduino IDE, Navigate to Tools > Board > Boards Manager and then search and install Arduino SAMD Boards(32-bits ARM Cortex-M0+).
   3. After installing the board,clone this repository and navigate to the protector_sever folder and open the sketch in your Arduino IDE.
-  4. Enter your network's SSID and PASS in the arduino_secrets.h tab and then select Tools > Board > "Arduino MKR Wifi 1010".
-  5. Now,just upload the code to your board by pressing 'Ctrl + R' or go to Sketch > Upload.
+  4. Enter your RFID tag or card's key in the RFID section of the code.
+  5. Now,enter your network's SSID and PASS in the arduino_secrets.h tab and then select Tools > Board > "Arduino MKR Wifi 1010".
+  6. Now,just upload the code to your board by pressing 'Ctrl + R' or go to Sketch > Upload.
   
 # Building the Protector App:
   1. Let's assuming that you are using "Ubuntu os",and now create a python3 virtual environment using terminal. 
