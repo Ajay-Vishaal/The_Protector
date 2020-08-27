@@ -52,7 +52,7 @@ int c3 = 0;
 int person = 0;
 int limit = 10;
 
-
+int al = 0;
 MFRC522 rfid(SS_PIN, RST_PIN);  // Instance of the class
 
 MFRC522::MIFARE_Key key;
@@ -233,6 +233,9 @@ void loop() {
             client.println("<c3>");
             client.println(c3);
             client.println("</c3>");
+            client.println("<alt>");
+            client.println(al);
+            client.println("</alt>");
             client.println("</html>");
             // break out of the while loop:
             break;
@@ -314,6 +317,7 @@ void loop() {
   //checks the sensor value and temperature
   if (US01() < 10 && mlx.readObjectTempC() > 37.7) {
     digitalWrite(latch, LOW);
+    al = al + 1;
     digitalWrite(buzz, HIGH);
     delay(800);
     digitalWrite(buzz, LOW);
