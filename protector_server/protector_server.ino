@@ -287,7 +287,7 @@ void loop() {
   if (US01() < 10 && person < limit) {
     Serial.println(mlx.readObjectTempC());
     //    reads the human temperature and check with the reference value
-    if (mlx.readObjectTempC() < 36) {
+    if (mlx.readObjectTempC() < 37.7) {
       digitalWrite(latch, HIGH);
       digitalWrite(buzz, HIGH);
       delay(1000);
@@ -300,7 +300,7 @@ void loop() {
     }
   }
 
-  //checks the sensor value and limit to read human temperature
+  //checks the sensor value and limit
   if (US01() < 10 && person == limit) {
     digitalWrite(latch, LOW);
     digitalWrite(buzz, HIGH);
@@ -309,6 +309,17 @@ void loop() {
     delay(500);
     digitalWrite(buzz, HIGH);
     delay(500);
+    digitalWrite(buzz, LOW);
+  }
+  //checks the sensor value and limit
+  if (US01() < 10 && mlx.readObjectTempC() > 37.7) {
+    digitalWrite(latch, LOW);
+    digitalWrite(buzz, HIGH);
+    delay(800);
+    digitalWrite(buzz, LOW);
+    delay(200);
+    digitalWrite(buzz, HIGH);
+    delay(800);
     digitalWrite(buzz, LOW);
   }
 
