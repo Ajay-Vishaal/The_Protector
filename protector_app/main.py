@@ -92,6 +92,9 @@ class ProtectorApp(App):
         #creates a dynamic label to show the person count                                                         
         self.output_label = Label(text = '', size_hint =(.1, .1))
         
+	#creates a label for High temperature warning
+        self.warn_label = Label(text = '', size_hint =(.1, .1))
+	
         #creates a button instance               
         b1 = Button(size_hint = (.2, .1),  
                     text ="+")  
@@ -123,6 +126,7 @@ class ProtectorApp(App):
         rl.add_widget(self.s2)
         rl.add_widget(l4)
         rl.add_widget(self.s3)
+	rl.add_widget(self.warn_label)
                         
         #binds functions to the switch instances                
         self.s.bind(active_norm_pos = self.on_press_sw1)
@@ -177,15 +181,21 @@ class ProtectorApp(App):
    cc1 = soup.find('c1')
    cc2 = soup.find('c2')
    cc3 = soup.find('c3') 
+   alt = soup.find('alt') 
    #removes spaces from the retrived data
    c1 = cc1.string.strip()
    c2 = cc2.string.strip()
    c3 = cc3.string.strip()
+   al = alt.string.strip()	
    txt = str(x.string.lstrip())
    n = str(l.string.lstrip())
    #update the data to labels
    self.output_label.text = txt
    self.limit.text = n
+   #checks the data with reference value
+   if (al > "0"):
+    #if true updates warning label
+    self.warn_label.text = "Alert! " + al + " Person"	
    #checks the data with reference value
    if (c1 == "1"):
     #if true changes state of switch
