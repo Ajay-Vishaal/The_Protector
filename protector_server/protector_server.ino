@@ -311,7 +311,7 @@ void loop() {
     delay(500);
     digitalWrite(buzz, LOW);
   }
-  //checks the sensor value and limit
+  //checks the sensor value and temperature
   if (US01() < 10 && mlx.readObjectTempC() > 37.7) {
     digitalWrite(latch, LOW);
     digitalWrite(buzz, HIGH);
